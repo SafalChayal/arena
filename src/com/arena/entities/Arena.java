@@ -33,7 +33,7 @@ public class Arena {
 		
 		while(this.getPlayer1().isAlive() && this.getPlayer2().isAlive()) {
 			
-			int attackingPlayerDice = attackingPlayer.attactPlayer();
+			int attackingPlayerDice = attackingPlayer.attackPlayer();
 			int defendingPlayerDice = defendingPlayer.defendPlayer();
 			
 			int damage = attackingPlayerDice*attackingPlayer.getAttack() - defendingPlayerDice*defendingPlayer.getStrength();

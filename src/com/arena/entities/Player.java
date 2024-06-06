@@ -39,7 +39,7 @@ public class Player {
 	
 	
 	
-	public int attactPlayer() {
+	public int attackPlayer() {
 		return dice.nextInt(6)+1;
 	}
 	
