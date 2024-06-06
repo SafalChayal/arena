@@ -1,7 +1,5 @@
 package com.arena.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Arena {
 	private Player player1;
@@ -48,13 +46,32 @@ public class Arena {
 		Player attackingPlayer = this.getAttacker();
 		Player defendingPlayer = this.getDefender();
 		
-		while(attackingPlayer.isGameOn() && defendingPlayer.isGameOn()) {
+		while(player1.isAlive() && player2.isAlive()) {
 			
 			int attackingPlayerDice = attackingPlayer.attactPlayer();
 			int defendingPlayerDice = defendingPlayer.defendPlayer();
 			
+			int damage = attackingPlayerDice*attackingPlayer.getAttack() - defendingPlayerDice*defendingPlayer.getStrength();
+			
+			if(damage > 0) {
+				defendingPlayer.afterAttack(damage);
+			}
+			
+			Player tempPlayer = defendingPlayer;
+			defendingPlayer = attackingPlayer;
+			attackingPlayer = tempPlayer;
 			
 		}
 		
+	}
+	
+	public void result() {
+		if(player1.isAlive()) {
+			System.out.println("Yayyy,  Player1 has won the fight !!!!!!!");
+		}
+		else {
+			System.out.println("Yayyy,  Player2 has won the fight !!!!!!!");
+
+		}
 	}
 }

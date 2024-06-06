@@ -52,7 +52,7 @@ public class Player {
 		this.setHealth(this.getHealth() -  strength);
 	}
 	
-	public boolean isGameOn() {
+	public boolean isAlive() {
 		return this.getHealth()>0;
 	}
 	
