@@ -4,8 +4,6 @@ package com.arena.entities;
 public class Arena {
 	private Player player1;
 	private Player player2;
-	private Player attacker;
-	private Player defender;
 	
 	public Arena(Player player1, Player player2) {
 		this.player1 = player1;
@@ -26,27 +24,14 @@ public class Arena {
 	
 	
 	
-	public Player getAttacker() {
-		return attacker;
-	}
-	
-	public Player getDefender() {
-		return defender;
-	}
-	
-	public void decideAttackerAndDefender(Player player1, Player player2) {
-		 this.attacker = player1.getHealth() < player2.getHealth() ? player1:player2;
-		 this.defender = attacker == player1 ? player2 : player1;
-		}
-	
 	
 	public void startMatch() {
-		decideAttackerAndDefender(this.getPlayer1(),this.getPlayer2());
 		
-		Player attackingPlayer = this.getAttacker();
-		Player defendingPlayer = this.getDefender();
+		Player attackingPlayer = this.getPlayer1().getHealth() < this.getPlayer2().getHealth() ? this.getPlayer1():this.getPlayer2();
+		Player defendingPlayer = attackingPlayer== this.getPlayer1() ? this.getPlayer2() : this.getPlayer1();
+	
 		
-		while(player1.isAlive() && player2.isAlive()) {
+		while(this.getPlayer1().isAlive() && this.getPlayer2().isAlive()) {
 			
 			int attackingPlayerDice = attackingPlayer.attactPlayer();
 			int defendingPlayerDice = defendingPlayer.defendPlayer();
@@ -66,7 +51,7 @@ public class Arena {
 	}
 	
 	public void result() {
-		if(player1.isAlive()) {
+		if(this.getPlayer1().isAlive()) {
 			System.out.println("Yayyy,  Player1 has won the fight !!!!!!!");
 		}
 		else {

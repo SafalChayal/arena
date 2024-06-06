@@ -48,8 +48,8 @@ public class Player {
 	}
 	
 	
-	public void afterAttack(int strength) {
-		this.setHealth(this.getHealth() -  strength);
+	public void afterAttack(int damage) {
+		this.setHealth(this.getHealth() -  damage);
 	}
 	
 	public boolean isAlive() {
